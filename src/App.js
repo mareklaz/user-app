@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { Navigate, Route, Routes } from "react-router-dom";
 import './App.css';
+import NavBar from './components/misc/NavBar';
+import HomeScreen from "./screens/home/HomeScreen";
+import UserDetailScreen from "./screens/user/UserDetailScreen";
+import UserFormScreen from "./screens/user/UserFormScreen";
+import UserListScreen from "./screens/user/UserListScreen";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='' data-theme="emerald">
+      <NavBar />
+      <div className='sm:container mx-auto'>
+        <Routes>
+          <Route path='/' element={<HomeScreen />}/>
+          <Route path="/users" element={<UserListScreen />}/>
+          <Route path='/users/new' element={<UserFormScreen />}/>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </div>
     </div>
   );
 }
